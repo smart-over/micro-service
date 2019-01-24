@@ -2,15 +2,18 @@
 
 namespace SmartOver\MicroService\Model;
 
+use Illuminate\Database\Eloquent\Builder;
+
 /**
  * Class BaseModel
  *
- * @method static \Illuminate\Database\Eloquent\Builder newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder query()
- * @method static \Illuminate\Database\Eloquent\Builder active()
- * @method static \Illuminate\Database\Eloquent\Builder deactive()
- * @method static \Illuminate\Database\Eloquent\Builder findOrFail(int $id)
+ * @method static Builder newModelQuery()
+ * @method static Builder newQuery()
+ * @method static Builder query()
+ * @method static Builder active()
+ * @method static Builder deactive()
+ * @method static Builder findOrFail(int $id)
+ * @method static Builder multiLang()
  */
 class BaseMultiLangModel extends BaseModel
 {
