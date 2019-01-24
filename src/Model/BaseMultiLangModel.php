@@ -1,9 +1,6 @@
 <?php
 
-namespace App\Models;
-
-use SmartOver\MicroService\Model\BaseModel;
-use Illuminate\Database\Eloquent\Builder;
+namespace SmartOver\MicroService\Model;
 
 /**
  * Class BaseModel
