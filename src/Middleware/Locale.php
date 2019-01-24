@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 /**
  * Class Locale
  *
- * @package App\Http\Middleware
+ * @package SmartOver\MicroService\Middleware
  */
 class Locale
 {
