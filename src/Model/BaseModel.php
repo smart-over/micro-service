@@ -27,14 +27,6 @@ class BaseModel extends Model
     public static function boot()
     {
         parent::boot();
-
-        static::creating(function ($model) {
-            $model->createdAt = time();
-        });
-
-        static::updating(function ($model) {
-            $model->updatedAt = time();
-        });
     }
 
     /**
