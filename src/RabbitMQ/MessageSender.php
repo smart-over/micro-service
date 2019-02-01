@@ -21,7 +21,7 @@ class MessageSender
     /**
      * @var \PhpAmqpLib\Connection\AMQPStreamConnection
      */
-    private $connection;
+    public $connection;
 
     /**
      * @var |PhpAmqpLib\Channel\AMQPChannel
