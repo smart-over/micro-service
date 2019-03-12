@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder query()
  * @method static \Illuminate\Database\Eloquent\Builder active()
  * @method static \Illuminate\Database\Eloquent\Builder deactive()
+ * @method static \Illuminate\Database\Eloquent\Builder notDeleted()
  * @method static \Illuminate\Database\Eloquent\Builder findOrFail(int $id)
  */
 class BaseModel extends Model
@@ -31,21 +32,39 @@ class BaseModel extends Model
 
     /**
      * @param $query
+     *
      * @return mixed
      */
     public function scopeActive($query)
     {
-
+        /**
+         * We start to use isDeleted field
+         * isActive field will be remove
+         */
         return $query->where('isActive', 1);
     }
 
     /**
      * @param $query
+     *
      * @return mixed
      */
     public function scopeDeactive($query)
     {
-
+        /**
+         * We start to use isDeleted field
+         * isActive field will be remove
+         */
         return $query->where('isActive', 0);
+    }
+
+    /**
+     * @param $query
+     *
+     * @return mixed
+     */
+    public function scopeNotDeleted($query)
+    {
+        return $query->where('isDeleted', 0);
     }
 }
