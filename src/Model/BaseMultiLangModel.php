@@ -11,11 +11,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder newModelQuery()
  * @method static Builder newQuery()
  * @method static Builder query()
- * @method static Builder active()
- * @method static Builder deactive()
- * @method static Builder notDeleted()
  * @method static Builder findOrFail(int $id)
- * @method static Builder multiLang()
+ * @method static BaseMultiLangModel active()
+ * @method static BaseMultiLangModel deactive()
+ * @method static BaseMultiLangModel notDeleted()
+ * @method static BaseMultiLangModel multiLang()
  * @mixin Model
  */
 class BaseMultiLangModel extends BaseModel

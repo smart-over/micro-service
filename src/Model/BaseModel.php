@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class BaseModel
  *
+ * @method static BaseModel  active()
+ * @method static BaseModel deactive()
+ * @method static BaseModel notDeleted()
  * @method static \Illuminate\Database\Eloquent\Builder newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder query()
- * @method static \Illuminate\Database\Eloquent\Builder active()
- * @method static \Illuminate\Database\Eloquent\Builder deactive()
- * @method static \Illuminate\Database\Eloquent\Builder notDeleted()
  * @method static \Illuminate\Database\Eloquent\Builder findOrFail(int $id)
  * @mixin Model
  */
