@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder deactive()
  * @method static \Illuminate\Database\Eloquent\Builder notDeleted()
  * @method static \Illuminate\Database\Eloquent\Builder findOrFail(int $id)
+ * @mixin Model
  */
 class BaseModel extends Model
 {

@@ -3,6 +3,7 @@
 namespace SmartOver\MicroService\Model;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class BaseModel
@@ -12,8 +13,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder query()
  * @method static Builder active()
  * @method static Builder deactive()
+ * @method static Builder notDeleted()
  * @method static Builder findOrFail(int $id)
  * @method static Builder multiLang()
+ * @mixin Model
  */
 class BaseMultiLangModel extends BaseModel
 {
@@ -44,6 +47,7 @@ class BaseMultiLangModel extends BaseModel
 
     /**
      * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder
      */
     public function scopeMultiLang(Builder $query)
@@ -56,17 +60,19 @@ class BaseMultiLangModel extends BaseModel
 
             $query = $query->leftJoin($this->langTable, function ($join) use ($currentLang) {
 
-                $join->on($this->table.'.id', '=', $this->langTable.'.'.$this->foreignField)->where($this->langTable.'.langCode', '=', $currentLang);
+                $join->on($this->table . '.id', '=',
+                    $this->langTable . '.' . $this->foreignField)->where($this->langTable . '.langCode', '=',
+                    $currentLang);
             });
 
             $langTableSelectFields = [];
 
             foreach ($this->translatableFields as $key) {
 
-                array_push($langTableSelectFields, $this->langTable.'.translate'.ucfirst($key));
+                array_push($langTableSelectFields, $this->langTable . '.translate' . ucfirst($key));
             }
 
-            array_push($langTableSelectFields, $this->table.'.*');
+            array_push($langTableSelectFields, $this->table . '.*');
 
             return $query->select($langTableSelectFields);
         }
@@ -82,7 +88,8 @@ class BaseMultiLangModel extends BaseModel
 
         $attributes = $this->addDateAttributesToArray($attributes = $this->getArrayableAttributes());
 
-        $attributes = $this->addMutatedAttributesToArray($attributes, $mutatedAttributes = $this->getMutatedAttributes());
+        $attributes = $this->addMutatedAttributesToArray($attributes,
+            $mutatedAttributes = $this->getMutatedAttributes());
 
         $attributes = $this->addCastAttributesToArray($attributes, $mutatedAttributes);
 
@@ -92,9 +99,9 @@ class BaseMultiLangModel extends BaseModel
 
         foreach ($this->translatableFields as $key) {
 
-            if ($this->getAttribute('translate'.ucfirst($key))) {
+            if ($this->getAttribute('translate' . ucfirst($key))) {
 
-                $attributes[$key] = $this->getAttribute('translate'.ucfirst($key));
+                $attributes[$key] = $this->getAttribute('translate' . ucfirst($key));
             }
         }
 
@@ -104,6 +111,7 @@ class BaseMultiLangModel extends BaseModel
     /**
      * @param string $key
      * @param mixed $value
+     *
      * @return mixed|void
      * @throws \Exception
      */
@@ -112,8 +120,8 @@ class BaseMultiLangModel extends BaseModel
         if (is_array($value)) {
 
             $allValues = $value;
-            if (! isset($allValues [config('app.defaultLocale')])) {
-                throw new \Exception($key.' has not contain default lang value');
+            if ( ! isset($allValues [config('app.defaultLocale')])) {
+                throw new \Exception($key . ' has not contain default lang value');
             }
 
             $value = $value[config('app.defaultLocale')];
@@ -144,6 +152,7 @@ class BaseMultiLangModel extends BaseModel
 
     /**
      * @param $model
+     *
      * @return void
      */
     public static function translate($model)
@@ -155,12 +164,12 @@ class BaseMultiLangModel extends BaseModel
 
                 $translateModel = ($model->translateModel)::firstOrNew([
                     $model->foreignField => $model->id,
-                    'langCode' => $language,
+                    'langCode'           => $language,
                 ]);
 
                 foreach ($value as $field => $fieldValue) {
 
-                    $translateModel->{'translate'.ucfirst($field)} = $fieldValue;
+                    $translateModel->{'translate' . ucfirst($field)} = $fieldValue;
                 }
                 $translateModel->save();
             }
