@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder query()
  * @method static \Illuminate\Database\Eloquent\Builder findOrFail(int $id)
+ * @method static \Illuminate\Database\Eloquent\Builder userId(string $userId)
  * @mixin Model
  */
 class BaseModel extends Model
@@ -67,5 +68,24 @@ class BaseModel extends Model
     public function scopeNotDeleted($query)
     {
         return $query->where('isDeleted', 0);
+    }
+
+    /**
+     * @param $query
+     * @param $userId
+     *
+     * @return mixed
+     */
+    public function scopeUserId($query, $userId)
+    {
+
+        if ($userId) {
+
+            $query = $query->where('userId', $userId);
+
+        }
+
+        return $query;
+
     }
 }

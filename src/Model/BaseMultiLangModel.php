@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static BaseMultiLangModel deactive()
  * @method static BaseMultiLangModel notDeleted()
  * @method static BaseMultiLangModel multiLang()
+ * @method static BaseMultiLangModel userId(string $userId)
  * @mixin Model
  */
 class BaseMultiLangModel extends BaseModel
