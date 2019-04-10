@@ -176,4 +176,12 @@ class BaseMultiLangModel extends BaseModel
             }
         }
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function languages()
+    {
+        return $this->hasMany($this->translateModel, $this->foreignField, $this->primaryKey);
+    }
 }
