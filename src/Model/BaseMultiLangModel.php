@@ -118,21 +118,17 @@ class BaseMultiLangModel extends BaseModel
      */
     public function setAttribute($key, $value)
     {
-        if (is_array($value)) {
-
-            $allValues = $value;
-            if ( ! isset($allValues [config('app.defaultLocale')])) {
-                throw new \Exception($key . ' has not contain default lang value');
+        if (is_array($value) or is_object($value)) {
+            $allValues = (array)$value;
+            if (isset($allValues[config('app.defaultLocale')])) {
+                unset($allValues[config('app.defaultLocale')]);
             }
-
-            $value = $value[config('app.defaultLocale')];
-            unset($allValues[config('app.defaultLocale')]);
-
             foreach ($allValues as $language => $foo) {
                 $this->translations[$language][$key] = $foo;
             }
+        } else {
+            $this->attributes[$key] = $value;
         }
-        $this->attributes[$key] = $value;
     }
 
     /**
