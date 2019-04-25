@@ -15,12 +15,13 @@ class Locale
     /**
      * @param \Illuminate\Http\Request $request
      * @param \Closure $next
+     *
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
     {
 
-        if ($request->header('Locale')) {
+        if ($request->header('Locale') && strlen($request->header('Locale')) > 0) {
 
             app('translator')->setLocale($request->header('Locale'));
         }
