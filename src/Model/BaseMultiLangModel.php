@@ -121,6 +121,7 @@ class BaseMultiLangModel extends BaseModel
         if (is_array($value) or is_object($value)) {
             $allValues = (array)$value;
             if (isset($allValues[config('app.defaultLocale')])) {
+                $this->attributes[$key] = $allValues[config('app.defaultLocale')];
                 unset($allValues[config('app.defaultLocale')]);
             }
             foreach ($allValues as $language => $foo) {
