@@ -67,7 +67,7 @@ class BaseModel extends Model
      */
     public function scopeNotDeleted($query)
     {
-        return $query->where('isDeleted', 0);
+        return $query->where($this->table . '.isDeleted', 0);
     }
 
     /**
