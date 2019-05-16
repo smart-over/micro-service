@@ -30,6 +30,12 @@ class BaseModel extends Model
     public static function boot()
     {
         parent::boot();
+
+        static::creating(function (Model $model) {
+            if (in_array('creationTime', $model->fillable)) {
+                $model->setAttribute('creationTime', time());
+            }
+        });
     }
 
     /**
