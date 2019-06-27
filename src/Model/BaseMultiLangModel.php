@@ -118,7 +118,7 @@ class BaseMultiLangModel extends BaseModel
      */
     public function setAttribute($key, $value)
     {
-        if (is_array($value) or is_object($value)) {
+        if ((is_array($value) or is_object($value)) and in_array($key, $this->translatableFields)) {
             $allValues = (array)$value;
             if (isset($allValues[config('app.defaultLocale')])) {
                 $this->attributes[$key] = $allValues[config('app.defaultLocale')];
@@ -128,7 +128,7 @@ class BaseMultiLangModel extends BaseModel
                 $this->translations[$language][$key] = $foo;
             }
         } else {
-            $this->attributes[$key] = $value;
+            parent::setAttribute($key, $value);
         }
     }
 
