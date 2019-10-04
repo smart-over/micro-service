@@ -8,15 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class BaseModel
  *
- * @method static Builder newModelQuery()
- * @method static Builder newQuery()
- * @method static Builder query()
- * @method static Builder findOrFail(int $id)
- * @method static BaseMultiLangModel active()
- * @method static BaseMultiLangModel deactive()
- * @method static BaseMultiLangModel notDeleted()
- * @method static BaseMultiLangModel multiLang()
- * @method static BaseMultiLangModel userId(string $userId)
+ * @method static BaseMultiLangModel|Builder newModelQuery()
+ * @method static BaseMultiLangModel|Builder newQuery()
+ * @method static BaseMultiLangModel|Builder query()
+ * @method static BaseMultiLangModel|Builder findOrFail(int $id)
+ * @method static BaseMultiLangModel|Builder notDeleted()
+ * @method static BaseMultiLangModel|Builder multiLang()
+ *
  * @mixin Model
  */
 class BaseMultiLangModel extends BaseModel

@@ -3,15 +3,17 @@
 namespace SmartOver\MicroService\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 
 /**
  * Class BaseModel
  *
- * @method static BaseModel notDeleted()
- * @method static \Illuminate\Database\Eloquent\Builder newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder query()
- * @method static \Illuminate\Database\Eloquent\Builder findOrFail(int $id)
+ * @method static BaseModel|Builder notDeleted()
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModel newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModel query()
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModel findOrFail(int $id)
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModel find(int $id)
  * @mixin Model
  */
 class BaseModel extends Model
