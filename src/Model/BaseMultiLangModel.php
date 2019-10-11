@@ -12,6 +12,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static BaseMultiLangModel|Builder newQuery()
  * @method static BaseMultiLangModel|Builder query()
  * @method static BaseMultiLangModel|Builder findOrFail(int $id)
+ * @method static BaseMultiLangModel|Builder find(int $id)
+ * @method static BaseMultiLangModel|Builder firstOrFail()()
+ * @method static BaseMultiLangModel|Builder first()
  * @method static BaseMultiLangModel|Builder notDeleted()
  * @method static BaseMultiLangModel|Builder multiLang()
  *

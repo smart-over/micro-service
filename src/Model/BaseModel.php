@@ -14,6 +14,8 @@ use Illuminate\Database\Query\Builder;
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModel query()
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModel findOrFail(int $id)
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModel find(int $id)
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModel firstOrFail()
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModel first()
  * @mixin Model
  */
 class BaseModel extends Model
